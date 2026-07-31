@@ -1,5 +1,5 @@
-blank_issues_enabled: true
+blank_issues_enabled: false
 contact_links:
-  - name: Questions & discussion
-    url: https://github.com/got-feedback/feedBack-plugin-spec/discussions
-    about: Not sure if it's a bug or a proposal? Ask here first.
+  - name: Roadmap or planning question
+    url: https://github.com/orgs/get-flashbacks/projects
+    about: Use the relevant GitHub Project board for roadmap-level planning when available.
