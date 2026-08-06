@@ -1,6 +1,12 @@
 # Development / CI dependencies for the feedBack plugin-spec repo.
 # The reference validator needs only jsonschema; pytest + ruff are for the
 # test and lint jobs.
-jsonschema
-pytest
-ruff
+#
+# Pinned to a minor-version-compatible range (~=X.Y) rather than left
+# floating: an unpinned dev dependency means CI silently picks up whatever
+# the latest release is on a given day, so a breaking change upstream shows
+# up as a mysterious CI failure unrelated to the PR that triggered it.
+# Bump deliberately when actually adopting a newer version.
+jsonschema~=4.26
+pytest~=9.1
+ruff~=0.16
