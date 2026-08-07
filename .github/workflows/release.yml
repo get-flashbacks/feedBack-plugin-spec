@@ -38,8 +38,9 @@ jobs:
         if: steps.ver.outputs.version != ''
         env:
           GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ steps.ver.outputs.version }}
         run: |
-          if gh release view "v${{ steps.ver.outputs.version }}" >/dev/null 2>&1; then
+          if gh release view "v${VERSION}" >/dev/null 2>&1; then
             echo "exists=true" >> "$GITHUB_OUTPUT"
           else
             echo "exists=false" >> "$GITHUB_OUTPUT"
@@ -49,9 +50,10 @@ jobs:
         if: steps.ver.outputs.version != '' && steps.check.outputs.exists == 'false'
         env:
           GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ steps.ver.outputs.version }}
         run: |
-          python tools/changelog_extract.py "${{ steps.ver.outputs.version }}" > RELEASE_NOTES.md
-          gh release create "v${{ steps.ver.outputs.version }}" \
+          python tools/changelog_extract.py "${VERSION}" > RELEASE_NOTES.md
+          gh release create "v${VERSION}" \
             --target "${GITHUB_SHA}" \
-            --title "v${{ steps.ver.outputs.version }}" \
+            --title "v${VERSION}" \
             --notes-file RELEASE_NOTES.md

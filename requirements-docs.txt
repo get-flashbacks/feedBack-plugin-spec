@@ -1,2 +1,7 @@
 # Docs-site dependencies (GitHub Pages build only). See .github/workflows/pages.yml.
-mkdocs-material
+#
+# Pinned to a patch-compatible range (~=X.Y.Z, all three components — see
+# requirements-dev.txt for why the third digit is load-bearing) rather
+# than left floating. Bump deliberately when actually adopting a newer
+# version.
+mkdocs-material~=9.7.7
